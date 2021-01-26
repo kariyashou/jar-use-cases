@@ -17,23 +17,7 @@ public class SelectLogic {
 	public static final String USER = "postgres";
 	public static final String PASS = "password";
 
-	/**
-	 * INSERT文にて引数（JSPからの入力）で指定した値をDBに追加するメソッド
-	 * @param name DBから抽出するデータ,String型
-	 * @param kanaName DBから抽出するデータ,String型
-	 * @param email DBから抽出するデータ,String型
-	 * @param sexId DBから抽出するデータ,int型
-	 * @param birthday DBから抽出するデータ,Date型
-	 * @param marriageId DBから抽出するデータ,int型
-	 * @param bloodtypeId DBから抽出するデータ,int型
-	 * @param prefId DBから抽出するデータ,int型
-	 * @param tell DBから抽出するデータ,String型
-	 * @param phone DBから抽出するデータ,String型
-	 * @param careerId DBから抽出するデータ,int型
-	 * @param curry DBから抽出するデータ,String型
-	 * @throws ClassNotFoundException if(class.forNameが正しくないとき)
-	 * @throws SQLException if(SQL文が正しくない場合)
-	 */
+	// INSERT文にて引数（JSPからの入力）で指定した値をDBに追加するメソッド
 	public void addition(String name, String kanaName, String email, int sexId, Date birthday, int marriageId,
 			int bloodtypeId, int prefId, String tell, String phone, int careerId, String curry)
 			throws ClassNotFoundException, SQLException {
@@ -65,12 +49,7 @@ public class SelectLogic {
 
 	}
 
-	/**
-	 * DELETE文にて引数（JSPからの入力）で指定した値（id）をDBから削除するメソッド
-	 * @param id DBから抽出するデータ、int型
-	 * @throws ClassNotFoundException if(class.forNameが正しくないとき)
-	 * @throws SQLException if(SQL文が正しくない場合)
-	 */
+	// DELETE文にて引数（JSPからの入力）で指定した値（id）をDBから削除するメソッド
 	public void delete(int id) throws ClassNotFoundException, SQLException {
 		Connection con = null;
 		PreparedStatement st;
@@ -82,23 +61,7 @@ public class SelectLogic {
 
 	}
 
-	/**
-	 * UPDATE文にて引数（JSPからの入力）で指定した値で該当するDBのデータを更新するメソッド戻り値はなし
-	 * @param name DBから抽出するデータ,String型
-	 * @param kanaName DBから抽出するデータ,String型
-	 * @param email DBから抽出するデータ,String型
-	 * @param sexId DBから抽出するデータ,int型
-	 * @param birthday DBから抽出するデータ,Date型
-	 * @param marriageId DBから抽出するデータ,int型
-	 * @param bloodtypeId DBから抽出するデータ,int型
-	 * @param prefId DBから抽出するデータ,int型
-	 * @param tell DBから抽出するデータ,String型
-	 * @param phone DBから抽出するデータ,String型
-	 * @param careerId DBから抽出するデータ,int型
-	 * @param curry DBから抽出するデータ,String型
-	 * @throws ClassNotFoundException if(class.forNameが正しくないとき)
-	 * @throws SQLException if(SQL文が正しくない場合)
-	 */
+	// UPDATE文にて引数（JSPからの入力）で指定した値で該当するDBのデータを更新するメソッド戻り値はなし
 	public void change(int id, String name, String kanaName, String email, int sexId, Date birthday, int marriageId,
 			int bloodtypeId, int prefId, String tell, String phone, int careerId, String curry)
 			throws ClassNotFoundException, SQLException {
@@ -127,23 +90,7 @@ public class SelectLogic {
 
 	}
 
-	/**
-	 * SELECT文にて引数（JSPからの入力）で指定した値をDBから抽出しリストにして変換するメソッド
-	 * @param name DBから抽出するデータ,String型
-	 * @param kanaName DBから抽出するデータ,String型
-	 * @param email DBから抽出するデータ,String型
-	 * @param sexId DBから抽出するデータ,int型
-	 * @param birthday DBから抽出するデータ,Date型
-	 * @param marriageId DBから抽出するデータ,int型
-	 * @param bloodtypeId DBから抽出するデータ,int型
-	 * @param prefId DBから抽出するデータ,int型
-	 * @param tell DBから抽出するデータ,String型
-	 * @param phone DBから抽出するデータ,String型
-	 * @param careerId DBから抽出するデータ,int型
-	 * @param curry DBから抽出するデータ,String型
-	 * @throws ClassNotFoundException if(class.forNameが正しくないとき)
-	 * @throws SQLException if(SQL文が正しくない場合)
-	 */
+	// SELECT文にて引数（JSPからの入力）で指定した値をDBから抽出しリストにして変換するメソッド
 	public List<InfoBeans> search(int id, String name, String kanaName, String email, int sexId, Date birthday,
 			int marriageId, int bloodtypeId, int prefId, String tell, String phone, int careerId, String curry)
 			throws ClassNotFoundException, SQLException {
@@ -155,6 +102,10 @@ public class SelectLogic {
 		List<InfoBeans> list = new ArrayList<>();
 		InfoBeans info = new InfoBeans();
 
+		/*
+		 * 入力条件に合わせてSQL文を組み立てていく（始） 下記のif分はjspからの入力データがnullまたは0かどうかを判定しそうでなかった場合に
+		 * StringBuilderにappendする
+		 */
 		sql = new StringBuilder("SELECT * FROM status WHERE 1=1");
 
 		if (id != 0) {
@@ -197,6 +148,7 @@ public class SelectLogic {
 			sql.append(" AND curry = " + "'" + String.valueOf(curry) + "'");
 		}
 		sql.append(" ORDER BY id ASC");
+		// SQL文組み立て（終）
 
 		System.out.println(sql);
 		PreparedStatement st = con.prepareStatement(sql.toString());
@@ -223,13 +175,7 @@ public class SelectLogic {
 		return list;
 	}
 
-	/**
-	 * idを引数にDB内にそのidが存在しているのか調べるメソッド
-	 * @param id DBから抽出するデータ,String型
-	 * @return 参照list内に同じ値が存在する倍はtrue,それ以外はfalse
-	 * @throws ClassNotFoundException if (DAOがnew出来ない場合)
-	 * @throws NumberFormatException if (idが正常に変換できない場合)
-	 */
+	// idを引数にDB内にそのidが存在しているのか調べるメソッド
 	public boolean idCheck(String id) throws ClassNotFoundException {
 		SelectDAO select = new SelectDAO();
 		boolean check = false;
@@ -251,12 +197,7 @@ public class SelectLogic {
 		return check;
 	}
 
-	/**
-	 * 各機能ごとのメソッドの処理の中で最後にソートする処理をするメソッド
-	 * @return SQL文でsortしたlistをreturnする
-	 * @throws ClassNotFoundException if (class.forNameが正しくないとき)
-	 * @throws SQLException if (SQL文が正しくないとき)
-	 */
+	// 各機能ごとのメソッドの処理の中で最後にソートする処理をするメソッド
 	public List<InfoBeans> sort() throws ClassNotFoundException, SQLException {
 
 		Connection con = null;

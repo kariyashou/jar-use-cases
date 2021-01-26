@@ -19,11 +19,7 @@ import model.InfoLogic;
 import model.InputLimitation;
 
 @WebServlet("/SearchServlet")
-/**
- * JSPからの各入力情報を条件によって分岐させるサーブレット
- * @author kariya
- * @version 13.0
- */
+//JSPからの各入力情報を条件によって分岐させるサーブレット
 public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

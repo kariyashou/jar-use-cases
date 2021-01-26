@@ -10,11 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/SearchScreenServlet")
-/**
- * 入力エラー表示後にもう一度入力画面へ遷移するためのサーブレット
- * @author kariya
- * @version 13.0
- */
+//入力エラー表示後にもう一度入力画面へ遷移するためのサーブレット
 public class SearchScreenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

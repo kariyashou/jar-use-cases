@@ -10,10 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/AdditionScreenServlet")
-//入力エラー表示後にもう一度入力画面へ遷移するためのサーブレット
+/**
+ * 入力エラー表示後にもう一度入力画面へ遷移するためのサーブレット
+ * @author kariya
+ * @version 13.0
+ */
 public class AdditionScreenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Addition.jsp");

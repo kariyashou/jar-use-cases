@@ -9,20 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/SearchScreenServlet")
-/**
- * 入力エラー表示後にもう一度入力画面へ遷移するためのサーブレット
- * @author kariya
- * @version 13.0
- */
-public class SearchScreenServlet extends HttpServlet {
+@WebServlet("/AdditionScreenServlet")
+//入力エラー表示後にもう一度入力画面へ遷移するためのサーブレット
+public class AdditionScreenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Search.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Addition.jsp");
 		dispatcher.forward(request, response);
-
 	}
 
 }

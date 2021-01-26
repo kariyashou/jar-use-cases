@@ -11,11 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebServlet("/SelectServlet")
-/**
- * JSP/submitの値からそれぞれ該当する機能に遷移するためのサーブレット
- * @author kariya
- * @version 13.0
- */
+//JSP/submitの値からそれぞれ該当する機能に遷移するためのサーブレット
 public class SelectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

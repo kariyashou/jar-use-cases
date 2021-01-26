@@ -10,7 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/ChangeScreenServlet")
-//入力エラー表示後にもう一度入力画面へ遷移するためのサーブレット
+/**
+ * 入力エラー表示後にもう一度入力画面へ遷移するためのサーブレット
+ * @author kariya
+ * @version 13.0
+ */
 public class ChangeScreenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

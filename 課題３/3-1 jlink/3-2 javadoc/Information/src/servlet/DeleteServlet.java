@@ -17,11 +17,7 @@ import dao.SelectDAO;
 import model.InfoBeans;
 
 @WebServlet("/DeleteServlet")
-/**
- * セッションからIDを取り出しDB内の該当データを削除する
- * @author kariya
- * @version 13.0
- */
+//セッションからIDを取り出しDB内の該当データを削除する
 public class DeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

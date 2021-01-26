@@ -20,11 +20,9 @@ import model.InfoLogic;
 import model.InputLimitation;
 
 @WebServlet("/ChangeServlet")
-/**
+/*
  * JSPからの入力情報の中身を判定し中身がすべてnullまたは０以外の場合は変数に代入していく
  * その後それらの変数を用いて該当メソッドの引数とし、DBに追加操作をする。
- * @author kariya
- * @version 13.0
  */
 public class ChangeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
